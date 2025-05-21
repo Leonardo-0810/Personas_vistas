@@ -68,12 +68,12 @@ export default {
   },
   methods: {
     cancelar() {
-      this.$router.push({ name: 'Comunias' })
+      this.$router.push({ name: 'Comunas' })
     },
     async updateComuna() {
       const res = await axios.put(`http://127.0.0.1:8000/api/comunas/${this.comuna.comu_cod}`, this.comuna)
       if (res.status === 200) {
-        this.$router.push({ name: 'Comunias' })
+        this.$router.push({ name: 'Comunas' })
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -85,7 +85,7 @@ export default {
     }
   },
   mounted() {
-    this.comuna.comu_cod = this.$route.params.id
+    this.comuna.comu_codi = this.$route.params.id
     axios.get(`http://127.0.0.1:8000/api/comunas/${this.comuna.comu_cod}`)
       .then(response => {
         this.comuna = response.data.comuna
